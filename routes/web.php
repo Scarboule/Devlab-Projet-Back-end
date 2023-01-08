@@ -16,7 +16,7 @@ use CodeBugLab\Tmdb\Facades\Tmdb;
 |
 */
 
-
+//Route::view('/genre', 'genre');
 Route::view('/', 'welcome');
 Route::view('/home', 'home');
 /*Route::get('/home', function (){
@@ -30,6 +30,9 @@ Route::view('/home', 'home');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/genre', function () {
+    return view('genre');
+})->middleware(['auth', 'verified'])->name('genre');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
