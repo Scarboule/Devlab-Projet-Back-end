@@ -5,9 +5,11 @@
 
 
     <ul  id="genres"></ul>
+    <ul id="mov"></ul>
 
     <script>
         const ul = document.getElementById('genres');
+        const mov = document.getElementById('mov');
         const list = document.createDocumentFragment();
         const url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=b228e0354b5ff112101aceeb5833e18d';
         const base_genre_url = 'https://api.themoviedb.org/3/discover/movie?api_key=b228e0354b5ff112101aceeb5833e18d&sort_by=popularity.desc&page=1&with_genres='
@@ -31,21 +33,18 @@
 
                     let li = document.createElement('li');
                     //let image = document.createElement('img');
-                    let name = document.createElement('a');
+                    let genreName = document.createElement('a');
 
-                    name.innerHTML = `${genre.name}`;
-                    name.id = `${genre.name}`;
-                    name.class = 'genre';
-                    name.onclick
+                    genreName.innerHTML = `${genre.name}`;
+                    //genreName.id = `${genre.id}`;
+                    //genreName.classList.add('genre');
+                    genreName.href = "/singlegenre/" + `${genre.id}`;
 
-                    //image.src = `${cour.image_url}`;
-
-                    //li.appendChild(image);
-                    li.appendChild(name);
+                    li.appendChild(genreName);
                     ul.appendChild(li);
                 });
             })
-        const hhh = document.getElementsByClassName('genre');
+        /*const hhh = document.getElementsByClassName('genre');
         hhh.onclick = function (){
             let bbb = hhh.id;
             let genre_url = base_genre_url + bbb
@@ -69,15 +68,19 @@
 
                         li.appendChild(image);
                         li.appendChild(title);
-                        ul.appendChild(li);
+                        mov.appendChild(li);
                     });
                 })
             ul.appendChild(list);
-        }
+        }*/
 
 
 
-        ul.appendChild(list);
+        //ul.appendChild(list);
+
+
+
+
 
     </script>
 
