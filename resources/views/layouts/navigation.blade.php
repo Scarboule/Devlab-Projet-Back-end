@@ -24,8 +24,14 @@
             </div>
 
             <form id="search-form" >
-                <input type="text" id="movie-name"  placeholder="Enter movie name">
+                <input type="text" id="movie-name">
                 <button type="submit" >Search</button>
+            </form>
+            <form id="filter-form">
+                <label class="mr-4">
+                    <input type="checkbox" id="only-non-adult" class="form-checkbox" checked>
+                    Show only non-adult movies
+                </label>
             </form>
 
             <!-- Settings Dropdown -->

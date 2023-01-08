@@ -41,23 +41,27 @@
                 event.preventDefault();
 
                 const movieName = document.querySelector('#movie-name').value;
+                const onlyNonAdult = document.querySelector('#only-non-adult').checked;
 
                 axios.get(`https://api.themoviedb.org/3/search/movie`, {
                     params: {
                         api_key: API_KEY,
-                        query: movieName
+                        query: movieName,
+                        include_adult: !onlyNonAdult
                     }
                 })
                     .then(response => {
                         let resultsHTML = '';
 
                         response.data.results.forEach(movie => {
+                            if (onlyNonAdult && movie.adult) {
+                                return;
+                            }
+
                             resultsHTML += `
         <div class="mx-4 my-4 w-1/3">
-          <a href="../singlemovie/${movie.id}">
           <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="w-full h-auto rounded-lg shadow-lg">
           <h2 class="text-xl mt-4">${movie.title}</h2>
-          </a>
         </div>
       `;
                         });
