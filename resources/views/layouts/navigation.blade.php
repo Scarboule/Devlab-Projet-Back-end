@@ -23,6 +23,11 @@
                 </div>
             </div>
 
+            <form id="search-form" >
+                <input type="text" id="movie-name"  placeholder="Enter movie name">
+                <button type="submit" >Search</button>
+            </form>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">

@@ -39,6 +39,10 @@ Route::get('/singlegenre/{id}', function ($id) {
     return view('singlegenre', ['id' => $id]);
 })->middleware(['auth', 'verified'])->name('singlegenre');
 
+Route::get('/singlemovie/{id}', function ($id) {
+    return view('singlemovie', ['id' => $id]);
+})->middleware(['auth', 'verified'])->name('singlemovie');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

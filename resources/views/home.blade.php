@@ -25,11 +25,12 @@
 
                 data.results.map(function(movie) {
 
+                    let link = document.createElement('a');
                     let li = document.createElement('li');
                     let image = document.createElement('img');
                     let title = document.createElement('h2');
 
-
+                    link.href = 'singlemovie/'+ `${movie.id}`;
                     title.innerHTML = `${movie.title}`;
                     image.src = img_path + `${movie.poster_path}`;
 
@@ -38,7 +39,8 @@
 
                     li.appendChild(title);
 
-                    ul.appendChild(li);
+                    ul.appendChild(link);
+                    link.appendChild(li);
                 });
             })
 
