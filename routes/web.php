@@ -3,6 +3,7 @@
 use App\Http\Controllers;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use CodeBugLab\Tmdb\Facades\Tmdb;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 Route::view('/home', 'home');
+/*Route::get('/home', function (){
+    $tmdb = Tmdb::people()->popular()->get();
+    return view('home', ['movies' => $tmdb]);
+});*/
 /*Route::get('/', function () {
     return view('welcome');
 });*/

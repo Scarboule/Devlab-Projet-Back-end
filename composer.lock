@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f591c7eeb4a388c31ef07cd4cdb90cb7",
+    "content-hash": "01f31260c99da7affc7801b052a59ef6",
     "packages": [
         {
             "name": "brick/math",
@@ -61,6 +61,68 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
+        },
+        {
+            "name": "codebuglab/laravel-tmdb",
+            "version": "v0.0.5-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codebuglab/laravel-tmdb.git",
+                "reference": "e07bd8f75c547a251db4c5a9d678b77237858752"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codebuglab/laravel-tmdb/zipball/e07bd8f75c547a251db4c5a9d678b77237858752",
+                "reference": "e07bd8f75c547a251db4c5a9d678b77237858752",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=6.0.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CodeBugLab\\Tmdb\\TmdbServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CodeBugLab\\Tmdb\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Elkomy",
+                    "email": "mo.ah.elkomy@gmail.com"
+                }
+            ],
+            "description": "Simple integration with TMDB ( The Movie Database ) API to retrieve their data.",
+            "keywords": [
+                "api",
+                "laravel",
+                "php",
+                "themoviedatabase",
+                "themoviedb",
+                "themoviedb-api",
+                "tmdb",
+                "tmdb-api"
+            ],
+            "support": {
+                "issues": "https://github.com/codebuglab/laravel-tmdb/issues",
+                "source": "https://github.com/codebuglab/laravel-tmdb/tree/v0.0.5-beta"
+            },
+            "time": "2022-08-22T10:01:25+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -7864,7 +7926,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "codebuglab/laravel-tmdb": 10
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
