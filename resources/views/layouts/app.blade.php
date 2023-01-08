@@ -28,8 +28,56 @@
 
             <!-- Page Content -->
             <main>
+                <div id="results" class="flex flex-wrap -mx-4"></div>
                 {{ $slot }}
             </main>
         </div>
+        <script>
+
+
+            const API_KEY = 'b228e0354b5ff112101aceeb5833e18d';
+
+            document.querySelector('#search-form').addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const movieName = document.querySelector('#movie-name').value;
+                const onlyNonAdult = document.querySelector('#only-non-adult').checked;
+
+                axios.get(`https://api.themoviedb.org/3/search/movie`, {
+                    params: {
+                        api_key: API_KEY,
+                        query: movieName,
+                        include_adult: !onlyNonAdult
+                    }
+                })
+                    .then(response => {
+                        let resultsHTML = '';
+
+                        response.data.results.forEach(movie => {
+                            if (onlyNonAdult && movie.adult) {
+                                return;
+                            }
+
+                            resultsHTML += `
+        <div class="mx-4 my-4 w-1/3">
+          <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="w-full h-auto rounded-lg shadow-lg">
+          <h2 class="text-xl mt-4">${movie.title}</h2>
+        </div>
+      `;
+                        });
+
+                        document.querySelector('#results').innerHTML = resultsHTML;
+                        if(resultsHTML == ''){
+                            resultsHTML = '<p class="text-xl text-center mt-4">No results found</p>';
+                            document.querySelector('#results').innerHTML = resultsHTML;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        document.querySelector('#results').innerHTML = '<p class="text-xl text-center mt-4">No results found</p>';
+                    });
+            });
+        </script>
     </body>
+
 </html>

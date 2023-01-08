@@ -3,6 +3,7 @@
 use App\Http\Controllers;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use CodeBugLab\Tmdb\Facades\Tmdb;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//Route::view('/genre', 'genre');
 Route::view('/', 'welcome');
 Route::view('/home', 'home');
+/*Route::get('/home', function (){
+    $tmdb = Tmdb::people()->popular()->get();
+    return view('home', ['movies' => $tmdb]);
+});*/
 /*Route::get('/', function () {
     return view('welcome');
 });*/
@@ -25,6 +30,18 @@ Route::view('/home', 'home');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/genre', function () {
+    return view('genre');
+})->middleware(['auth', 'verified'])->name('genre');
+
+Route::get('/singlegenre/{id}', function ($id) {
+    return view('singlegenre', ['id' => $id]);
+})->middleware(['auth', 'verified'])->name('singlegenre');
+
+Route::get('/singlemovie/{id}', function ($id) {
+    return view('singlemovie', ['id' => $id]);
+})->middleware(['auth', 'verified'])->name('singlemovie');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

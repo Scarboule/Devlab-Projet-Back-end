@@ -16,7 +16,23 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('genre')" :active="request()->routeIs('genre')">
+                        {{ __('genre') }}
+                    </x-nav-link>
+                </div>
             </div>
+
+            <form id="search-form" >
+                <input type="text" id="movie-name">
+                <button type="submit" >Search</button>
+            </form>
+            <form id="filter-form">
+                <label class="mr-4">
+                    <input type="checkbox" id="only-non-adult" class="form-checkbox" checked>
+                    Show only non-adult movies
+                </label>
+            </form>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
