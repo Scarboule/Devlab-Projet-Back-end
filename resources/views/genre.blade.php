@@ -8,6 +8,9 @@
     <ul id="mov"></ul>
 
     <script>
+
+        const API_KEY = 'b228e0354b5ff112101aceeb5833e18d';
+
         const ul = document.getElementById('genres');
         const mov = document.getElementById('mov');
         const list = document.createDocumentFragment();

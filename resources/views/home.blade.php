@@ -21,9 +21,9 @@
 
         let sort = 'popularity.desc';
 
-        // Function to fetch and display movies
+
         function fetchMovies() {
-            // Make API call to TMDb
+
             fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=${sort}&api_key=${API_KEY}`)
                 .then(response => response.json())
                 .then(data => {
