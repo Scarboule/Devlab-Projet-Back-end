@@ -17,8 +17,8 @@ use CodeBugLab\Tmdb\Facades\Tmdb;
 */
 
 //Route::view('/genre', 'genre');
-Route::view('/', 'welcome');
-Route::view('/home', 'home');
+//Route::view('/', 'welcome');
+//Route::view('/home', 'home');
 /*Route::get('/home', function (){
     $tmdb = Tmdb::people()->popular()->get();
     return view('home', ['movies' => $tmdb]);
@@ -26,6 +26,13 @@ Route::view('/home', 'home');
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
+    return view('home');
+})->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'MovieLab') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -35,7 +35,7 @@
         <script>
 
 
-            const API_KEY = 'b228e0354b5ff112101aceeb5833e18d';
+            //const API_KEY = 'b228e0354b5ff112101aceeb5833e18d';
 
             document.querySelector('#search-form').addEventListener('submit', (event) => {
                 event.preventDefault();
@@ -52,6 +52,7 @@
                 })
                     .then(response => {
                         let resultsHTML = '';
+                        console.log(response);
 
                         response.data.results.forEach(movie => {
                             if (onlyNonAdult && movie.adult) {
@@ -60,8 +61,10 @@
 
                             resultsHTML += `
         <div class="mx-4 my-4 w-1/3">
+          <a href="/singlemovie/${movie.id}">
           <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="w-full h-auto rounded-lg shadow-lg">
           <h2 class="text-xl mt-4">${movie.title}</h2>
+          </a>
         </div>
       `;
                         });
