@@ -1,51 +1,59 @@
 <x-app-layout>
-    <h1>Welcome</h1>
+    <h1>Discover Movies</h1>
+    <form>
+        <label for="sort">Sort by:</label>
+        <select id="sort">
+            <option value="popularity.asc">Popularity (Ascending)</option>
+            <option value="popularity.desc">Popularity (Descending)</option>
+            <option value="vote_average.asc">Rating (Ascending)</option>
+            <option value="vote_average.asc">Rating (Descending)</option>
+            <option value="original_title.asc">Name (Ascending)</option>
+            <option value="original_title.desc">Name (Descending)</option>
+        </select>
+    </form>
+    <div id="movies"></div>
 
-
-
-
-    <ul class="flex-wrap" id="movies"></ul>
 
 
     <script>
-        const ul = document.getElementById('movies');
-        const list = document.createDocumentFragment();
-        const url = 'https://api.themoviedb.org/3/movie/popular?api_key=b228e0354b5ff112101aceeb5833e18d';
-        const img_path = 'https://image.tmdb.org/t/p/original/'
 
-        fetch(url)
-            .then((response) => {
-                console.log(response);
-                return response.json();
+        const API_KEY = 'b228e0354b5ff112101aceeb5833e18d';
 
-            })
-            .then((data) => {
-                console.log(data);
-                let movies = data;
+        let sort = 'popularity.desc';
 
-                data.results.map(function(movie) {
+        // Function to fetch and display movies
+        function fetchMovies() {
+            // Make API call to TMDb
+            fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=${sort}&api_key=${API_KEY}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear movies div
+                    console.log(data);
+                    document.getElementById('movies').innerHTML = '';
 
-                    let link = document.createElement('a');
-                    let li = document.createElement('li');
-                    let image = document.createElement('img');
-                    let title = document.createElement('h2');
-
-                    link.href = 'singlemovie/'+ `${movie.id}`;
-                    title.innerHTML = `${movie.title}`;
-                    image.src = img_path + `${movie.poster_path}`;
-
-
-                    li.appendChild(image);
-
-                    li.appendChild(title);
-
-                    ul.appendChild(link);
-                    link.appendChild(li);
+                    // Loop through results and display movie info
+                    data.results.forEach(movie => {
+                        let div = document.createElement('div');
+                        div.innerHTML = `
+            <a href="/singlemovie/${movie.id}">
+              <h2>${movie.title}</h2>
+              <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="w-full h-auto rounded-lg shadow-lg">
+            </a>
+              <p>Popularity: ${movie.popularity}</p>
+              <p>Rating: ${movie.vote_average}</p>
+            `;
+                        document.getElementById('movies').appendChild(div);
+                    });
                 });
-            })
+        }
+        document.getElementById('sort').addEventListener('change', function(e) {
+            sort = e.target.value;
+            fetchMovies();
+        });
+        // Fetch movies when page loads
+        fetchMovies();
 
-
-        ul.appendChild(list);
+        // Update sort value and fetch movies when sort dropdown changes
 
 
     </script>

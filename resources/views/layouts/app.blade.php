@@ -60,8 +60,10 @@
 
                             resultsHTML += `
         <div class="mx-4 my-4 w-1/3">
+          <a href="/singlemovie/${movie.id}">
           <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="w-full h-auto rounded-lg shadow-lg">
           <h2 class="text-xl mt-4">${movie.title}</h2>
+          </a>
         </div>
       `;
                         });

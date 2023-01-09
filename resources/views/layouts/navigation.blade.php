@@ -30,7 +30,7 @@
             <form id="filter-form">
                 <label class="mr-4">
                     <input type="checkbox" id="only-non-adult" class="form-checkbox" checked>
-                    Show only non-adult movies
+                    Only non-adult movies
                 </label>
             </form>
 
