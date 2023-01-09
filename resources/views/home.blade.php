@@ -6,7 +6,7 @@
             <option value="popularity.asc">Popularity (Ascending)</option>
             <option value="popularity.desc">Popularity (Descending)</option>
             <option value="vote_average.asc">Rating (Ascending)</option>
-            <option value="vote_average.asc">Rating (Descending)</option>
+            <option value="vote_average.desc">Rating (Descending)</option>
             <option value="original_title.asc">Name (Ascending)</option>
             <option value="original_title.desc">Name (Descending)</option>
         </select>
